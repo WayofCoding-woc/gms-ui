@@ -1,0 +1,54 @@
+(A)________________create a sample project and push it to github remote repository_________________
+(1) to create a react project(gms-ui)
+    npx create-react-app gms-ui
+(2) switch to the project directory
+    cd gms-ui
+(3) to start the react application
+    npm start
+(4) open a browser and hit the below url to see the index page of the running application
+    http://localhost:3000
+(5) Login to github and create a github repository for this ui project and you will get a sample git uri below
+    https://github.com/WayofCoding-woc/gms-ui.git
+
+(6) to add the remote github repository
+    git remote add origin https://github.com/WayofCoding-woc/gms-ui.git
+
+(7) to push the project to remote repository
+    git push -u origin master
+
+
+(B)______________on other side someone want's to clone the repo to start the development work_______________
+
+(8) to clone the project
+    git clone https://github.com/WayofCoding-woc/gms-ui.git
+(9) switch to the project directory
+    cd gms-ui
+(10) Note that the node_modules directory is not present in the remote github repository,
+ so we need to install it manually in our local machine after the git clone
+    npm install
+(11) to start the application
+    npm start
+(11.1) if the application is not starting and showing some error like below
+'react-scripts' is not recognized as an internal or external command,
+operable program or batch file. In this case we need to install the below command
+and then try the step-11 again
+
+    npm install react-scripts
+
+
+(12) open a browser and hit the below url to see the index page of the running application
+    http://localhost:3000
+
+(C)______________to install bootstrap library__________________________
+(13) execute the below command in the project directory(gms-ui)
+    npm install bootstrap
+    npm install jquery
+    npm install popper.js
+
+(14) now add these below import statements on the very top section inside the index.js file
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+import $ from 'jquery';
+import Popper from 'popper.js';
+
+    
