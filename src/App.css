@@ -36,3 +36,74 @@
     transform: rotate(360deg);
   }
 }
+
+
+
+.footer{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  overflow: hidden;
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+nav{
+  margin-bottom: 50px
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #04AA6D;
+}
+
+
+.login_form{
+  margin-top: 50px;
+  width: 400px;
+  text-align: center;
+}
+
+.loggedInUserPanel{
+  color: #61dafb;
+  margin-left: 400px;
+  margin-top: 15px;
+}
+
+.container h3{
+  background-color: bisque;
+  padding: 5px;
+  border-radius: 25px;
+  font-size: large;
+  text-align: center;
+  text-decoration: underline;
+}

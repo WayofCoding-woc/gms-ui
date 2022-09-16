@@ -51,4 +51,14 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 import $ from 'jquery';
 import Popper from 'popper.js';
 
+(15) install the react router dom 
+    npm install react-router-dom
+
+(16) We can use useEffect react hook to execute the on-page-load script
+
+(17) Note that when we use useEffect hook,
+ We might notice that the page load script get exectued more than one time.
+ To stop the multiple time script execution, we can comment the
+ <React.StrictMode> in index.js file
+
     
