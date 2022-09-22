@@ -107,3 +107,10 @@ li a:hover:not(.active) {
   text-align: center;
   text-decoration: underline;
 }
+
+.login_error_msg{
+  color: red;
+  font-weight: bold;
+  font-size: larger;
+  font-style: italic;
+}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-function ViewAllPlans() {
+function ViewSubscribedPlans() {
 
   const[plans, setPlans] = useState([]);
   const[loading, setLoading] = useState(false);
@@ -10,7 +10,7 @@ function ViewAllPlans() {
     //fetch all the existing plans from backend and update the state variables plans.
     setLoading(true);
     
-    fetch('http://localhost:9363/api/plan/all')
+    fetch('http://localhost:9363/api/customer/1/plan/all')
         .then(response => response.json())
         .then(json => {
             //console.log(json);
@@ -23,16 +23,15 @@ function ViewAllPlans() {
 
   return (
     <div className='container'>
-      <h3>View All Plans</h3>
+      <h3>View Subscribed Plans</h3>
       <div>
         <table className='table table-striped table-info table-bordered border-secondary'>
           <thead>
             <tr>
-                <th>Name</th>
+                <th>Plan Name</th>
                 <th>Validity</th>
-                <th>Price</th>
-                <th>Discount</th>
-                <th>Final Price</th>
+                <th>Activated Date</th>
+                <th>Status</th>
             </tr>
           </thead>
           <tbody>
@@ -40,11 +39,10 @@ function ViewAllPlans() {
           {loading?(<tr key={0}><td colSpan={5}>Loading the data ...</td></tr>):
             plans.map((p, i)=>(
               <tr key={i}>
-                <td>{p.name}</td>
+                <td>{p.plan}</td>
                 <td>{p.validity}</td>
-                <td>{p.price}</td>
-                <td>{p.discount}</td>
-                <td>{p.finalPrice}</td>
+                <td>{p.activatedDate}</td>
+                <td>{p.status}</td>
               </tr>
             ))
             
@@ -58,4 +56,4 @@ function ViewAllPlans() {
   )
 }
 
-export default ViewAllPlans
+export default ViewSubscribedPlans

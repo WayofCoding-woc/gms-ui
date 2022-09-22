@@ -5,12 +5,44 @@ function Layout() {
  //const[loggedInUser, setLoggedInUser] = useState("Akshansh Kumar");
  const[loggedInUser, setLoggedInUser] = useState(null);
  const navigate = useNavigate();
+ const[username, setUsername] = useState("");
+ const[password, setPassword] = useState("");
+ const[loginErrorMessage, setLoginErrorMessage] = useState("");
 
- const login = ()=>{
+ const login = (e)=>{
+  e.preventDefault();
   // invoke login rest api from backend and validate the credentials
   // if user is authenticated then update the variable loggedInUser and navigate to home page
-  setLoggedInUser("Akshansh Kumar");
-  navigate("/");
+  //setLoggedInUser("Akshansh Kumar");
+  //alert("username="+username+",password="+password)
+
+  let payload = {
+    "username" : username,
+    "password" : password
+  };
+
+    fetch('http://localhost:9363/api/login',
+    {
+        method: "POST",
+        body: JSON.stringify(payload),
+        headers: {
+        'Content-Type': 'application/json'
+        }
+    })
+  .then(response => response.json())
+  .then(json => {
+    console.log(json)
+    if(json===true){
+      setLoggedInUser(username);
+      setLoginErrorMessage("");
+      navigate("/");
+    }else{
+      setLoginErrorMessage("Invalid Credentials, please try again.");
+      setLoggedInUser(null);
+    }
+  
+  });
+
  }
 
  const logout = ()=>{
@@ -24,16 +56,17 @@ function Layout() {
   return (
     <div className='container login_form'>
       <h3>GYM Portal - Login Page</h3>
+      <div className="login_error_msg">{loginErrorMessage}</div>
       <form onSubmit={login}>
         <table className="table table-bordered table-info">
           <tbody>
               <tr>
                   <th>Username:</th>
-                  <td><input id="username" type="text" /> </td>
+                  <td><input id="username" type="text" value={username} onChange={(e)=>setUsername(e.target.value)} required /> </td>
               </tr>
               <tr>
                   <th>Password:</th>
-                  <td><input id="pwd" type="password" /> </td>
+                  <td><input id="pwd" type="password" value={password} onChange={(e)=>setPassword(e.target.value)} required /> </td>
               </tr>
               <tr>
                   <td align="center" colSpan="2">
@@ -52,6 +85,7 @@ function Layout() {
         <ul>
           <li><Link to="/" >Home</Link></li>
           <li><Link to="viewAllPlans" >View All Plans</Link></li>
+          <li><Link to="viewSubscribedPlans" >View Subscribed Plans</Link></li>
           <li><div className='loggedInUserPanel'>{loggedInUser} !</div></li>
           <li><div><Link to="" onClick={logout}>Logout</Link></div></li>
         </ul>
