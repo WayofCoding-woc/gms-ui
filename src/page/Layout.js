@@ -13,15 +13,13 @@ function Layout() {
   e.preventDefault();
   // invoke login rest api from backend and validate the credentials
   // if user is authenticated then update the variable loggedInUser and navigate to home page
-  //setLoggedInUser("Akshansh Kumar");
-  //alert("username="+username+",password="+password)
 
   let payload = {
     "username" : username,
     "password" : password
   };
 
-    fetch('http://localhost:9363/api/login',
+    fetch(process.env.REACT_APP_API_BASE_URL+'/api/login',
     {
         method: "POST",
         body: JSON.stringify(payload),
@@ -30,10 +28,13 @@ function Layout() {
         }
     })
   .then(response => response.json())
-  .then(json => {
-    console.log(json)
-    if(json===true){
-      setLoggedInUser(username);
+  .then(data => {
+    console.log(data);
+    window.sessionStorage.setItem("username", data.username);
+    window.sessionStorage.setItem("role", data.role);
+    window.sessionStorage.setItem("customerId", data.customerId);
+    if(data.authenticated===true){
+      setLoggedInUser(data.username);
       setLoginErrorMessage("");
       navigate("/");
     }else{
@@ -48,6 +49,9 @@ function Layout() {
  const logout = ()=>{
     //alert('logged out');
     setLoggedInUser(null);
+    window.sessionStorage.removeItem("data");
+    window.sessionStorage.removeItem("role");
+    window.sessionStorage.removeItem("customerId");
     navigate("/");
  }
 
@@ -85,7 +89,25 @@ function Layout() {
         <ul>
           <li><Link to="/" >Home</Link></li>
           <li><Link to="viewAllPlans" >View All Plans</Link></li>
-          <li><Link to="viewSubscribedPlans" >View Subscribed Plans</Link></li>
+
+          {
+            (window.sessionStorage.getItem("role")==="CUSTOMER")?
+              <li><Link to="viewSubscribedPlans" >View Subscribed Plans</Link></li>
+              : ""
+          }
+
+          {
+            (window.sessionStorage.getItem("role")==="CUSTOMER")?
+              <li><Link to="viewProfile" >View Profile</Link></li>
+              : ""
+          }
+
+          {
+            (window.sessionStorage.getItem("role")==="ADMIN")?
+              <li><Link to="createCustomer" >Create Customer</Link></li>
+              : ""
+          }
+
           <li><div className='loggedInUserPanel'>{loggedInUser} !</div></li>
           <li><div><Link to="" onClick={logout}>Logout</Link></div></li>
         </ul>

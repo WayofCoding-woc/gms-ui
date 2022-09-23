@@ -10,7 +10,7 @@ function ViewAllPlans() {
     //fetch all the existing plans from backend and update the state variables plans.
     setLoading(true);
     
-    fetch('http://localhost:9363/api/plan/all')
+    fetch(process.env.REACT_APP_API_BASE_URL+'/api/plan/all')
         .then(response => response.json())
         .then(json => {
             //console.log(json);
@@ -28,6 +28,7 @@ function ViewAllPlans() {
         <table className='table table-striped table-info table-bordered border-secondary'>
           <thead>
             <tr>
+                <th>Plan Id</th>
                 <th>Name</th>
                 <th>Validity</th>
                 <th>Price</th>
@@ -40,6 +41,7 @@ function ViewAllPlans() {
           {loading?(<tr key={0}><td colSpan={5}>Loading the data ...</td></tr>):
             plans.map((p, i)=>(
               <tr key={i}>
+                <td>{p.id}</td>
                 <td>{p.name}</td>
                 <td>{p.validity}</td>
                 <td>{p.price}</td>

@@ -6,6 +6,8 @@ import Home from './page/Home';
 import Error from './page/Error';
 import ViewAllPlans from './page/ViewAllPlans';
 import ViewSubscribedPlans from './page/ViewSubscribedPlans';
+import CreateCustomer from './page/CreateCustomer';
+import ViewProfile from './page/ViewProfile';
 
 function App() {
   
@@ -15,7 +17,9 @@ function App() {
         <Route path="/" element={<Layout />} >
           <Route index element={<Home />} />
           <Route path="viewAllPlans" element={<ViewAllPlans />} />
+          <Route path="createCustomer" element={<CreateCustomer />} />
           <Route path="viewSubscribedPlans" element={<ViewSubscribedPlans />} />
+          <Route path="viewProfile" element={<ViewProfile />} />
           <Route path="*" element={<Error />} />
         </Route>
 

@@ -9,8 +9,9 @@ function ViewSubscribedPlans() {
   useEffect(()=>{
     //fetch all the existing plans from backend and update the state variables plans.
     setLoading(true);
-    
-    fetch('http://localhost:9363/api/customer/1/plan/all')
+    let customerId = window.sessionStorage.getItem("customerId");
+    console.log("customerId="+customerId)
+    fetch(process.env.REACT_APP_API_BASE_URL+'/api/customer/'+customerId+'/plan/all')
         .then(response => response.json())
         .then(json => {
             //console.log(json);
