@@ -33,6 +33,9 @@ function ViewSubscribedPlans() {
                 <th>Validity</th>
                 <th>Activated Date</th>
                 <th>Status</th>
+                <th>Payment Mode</th>
+                <th>Payment Ref No</th>
+                <th>Paid Amount</th>
             </tr>
           </thead>
           <tbody>
@@ -44,6 +47,9 @@ function ViewSubscribedPlans() {
                 <td>{p.validity}</td>
                 <td>{p.activatedDate}</td>
                 <td>{p.status}</td>
+                <td>{p.paymentMode}</td>
+                <td>{p.paymentRefNo}</td>
+                <td>{p.paidAmount}</td>
               </tr>
             ))
             

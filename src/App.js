@@ -8,6 +8,7 @@ import ViewAllPlans from './page/ViewAllPlans';
 import ViewSubscribedPlans from './page/ViewSubscribedPlans';
 import CreateCustomer from './page/CreateCustomer';
 import ViewProfile from './page/ViewProfile';
+import SubscribePlan from './page/SubscribePlan';
 
 function App() {
   
@@ -20,6 +21,7 @@ function App() {
           <Route path="createCustomer" element={<CreateCustomer />} />
           <Route path="viewSubscribedPlans" element={<ViewSubscribedPlans />} />
           <Route path="viewProfile" element={<ViewProfile />} />
+          <Route path="subscribePlan" element={<SubscribePlan />} />
           <Route path="*" element={<Error />} />
         </Route>
 

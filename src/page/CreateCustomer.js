@@ -19,7 +19,7 @@ function CreateCustomer() {
       "address" : address
     }
 
-    alert(JSON.stringify(payload));
+    console.log("payload = " + JSON.stringify(payload));
     //Note that we need to invoke rest api with the above payload to create a customer at backend server.
 
 
@@ -34,8 +34,11 @@ function CreateCustomer() {
     .then(response => response.json())
     .then(json => {
         console.log(json)
-        alert('Customer has been created successfully!');
-      
+        if(json.error != null){
+          alert('Could not process your request, errorMessage : ' + json.error);
+        }else{
+          alert('Customer has been created successfully!');
+        }
     });
     
   }

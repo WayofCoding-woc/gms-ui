@@ -108,6 +108,12 @@ function Layout() {
               : ""
           }
 
+          {
+            (window.sessionStorage.getItem("role")==="ADMIN")?
+              <li><Link to="subscribePlan" >Subscribe Plan</Link></li>
+              : ""
+          }
+
           <li><div className='loggedInUserPanel'>{loggedInUser} !</div></li>
           <li><div><Link to="" onClick={logout}>Logout</Link></div></li>
         </ul>
