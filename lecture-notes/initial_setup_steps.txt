@@ -61,4 +61,51 @@ import Popper from 'popper.js';
  To stop the multiple time script execution, we can comment the
  <React.StrictMode> in index.js file
 
+
+_________________Prod deployment steps__________________
+  
+  (18) make an entry of homepage to package.json, here "gms-ui" is the project folder
+       "homepage": "gms-ui",
+
+  (19) To build a react project for the prod deployment
+       npm run build
+
+  (20) Download apache tomcat 10 from the below link
+        https://tomcat.apache.org/download-10.cgi
+        https://dlcdn.apache.org/tomcat/tomcat-10/v10.0.26/bin/apache-tomcat-10.0.26.zip
+        https://dlcdn.apache.org/tomcat/tomcat-10/v10.0.26/bin/apache-tomcat-10.0.26.tar.gz
+
+   (21) Unzip the tomcat file and go to the bin folder
+        cd apache-tomcat-10.0.26/bin
+   (22) start the tomcat server
+        ./startup.sh
+        or window user can double click on the startup.bat file
+    (23)[Optional steps] we can find the server logs at below directory
+        cd apache-tomcat-10.0.26/logs/
+        catalina.out
+        
+
+    (24) Open the browser and hit the below url
+          http://localhost:8080/
+     
+     (25) if the page is not loading using the above url then see the logs using step-23
+
+     (25.1) to change tomcat port, go to conf folder
+            cd apache-tomcat-10.0.26/conf
+            open the file server.xml using any text editor or notepad 
+            and change the http port from 8080 to any other 4 digit number higher than 8000 and save the file
+            start the server using step-22 and reload the url mentioned in the step-24.
+     
+     (26) to deploy the application, go to webapp folder
+          cd apache-tomcat-10.0.26/webapp
+     (27) create a project folder inside the webapp
+          mkdir gms-ui
+
+      (28) Now copy the build content from react project folder to the tomcat/webpps/gms-ui
+           cp -r /sourcecode/Day-42/gms-ui/build/* apache-tomcat-10.0.26/webapps/gms-ui/
+
+       (29)Hit the below url
+            http://localhost:8080/gms-ui
+      
+
     

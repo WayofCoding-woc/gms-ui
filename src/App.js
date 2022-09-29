@@ -9,6 +9,7 @@ import ViewSubscribedPlans from './page/ViewSubscribedPlans';
 import CreateCustomer from './page/CreateCustomer';
 import ViewProfile from './page/ViewProfile';
 import SubscribePlan from './page/SubscribePlan';
+import ResetPassword from './page/ResetPassword';
 
 function App() {
   
@@ -22,6 +23,7 @@ function App() {
           <Route path="viewSubscribedPlans" element={<ViewSubscribedPlans />} />
           <Route path="viewProfile" element={<ViewProfile />} />
           <Route path="subscribePlan" element={<SubscribePlan />} />
+          <Route path="resetPassword" element={<ResetPassword />} />
           <Route path="*" element={<Error />} />
         </Route>
 

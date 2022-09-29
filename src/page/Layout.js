@@ -114,6 +114,7 @@ function Layout() {
               : ""
           }
 
+          <li><Link to="resetPassword" >Reset Password</Link></li>
           <li><div className='loggedInUserPanel'>{loggedInUser} !</div></li>
           <li><div><Link to="" onClick={logout}>Logout</Link></div></li>
         </ul>
